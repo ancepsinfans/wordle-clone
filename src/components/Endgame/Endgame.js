@@ -5,7 +5,7 @@ import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
 
 function Endgame({ answer, guesses, setGuesses }) {
-  const type = guesses.length < NUM_OF_GUESSES_ALLOWED ? 'happy' : 'sad'
+  const type = guesses[guesses.length - 1] === answer ? 'happy' : 'sad'
 
   function handlerReset() {
     setGuesses([])

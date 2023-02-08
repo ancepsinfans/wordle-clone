@@ -61,8 +61,6 @@ export function checkGuess(guess, answer) {
   const res = firstPass(guessChars, answerChars)
 
 
-  console.log(res)
-
 
   return res
 }

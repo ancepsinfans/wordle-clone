@@ -10,7 +10,7 @@ import Word from '../Word/Word';
 import Endgame from '../Endgame/Endgame';
 
 // Pick a random word on every pageload.
-const answer = "SORES"//sample(WORDS);
+const answer = sample(WORDS);
 // To make debugging easier, we'll log the solution in the console.
 console.info({ answer });
 

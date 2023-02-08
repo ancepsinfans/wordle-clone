@@ -2,7 +2,6 @@ import React from 'react';
 import { GrCircleQuestion, GrClose } from 'react-icons/gr';
 
 function Header({ isHelp = false, isOpen, setIsOpen }) {
-  console.log(isOpen)
   return (
     <header>
       <div className='side' />
