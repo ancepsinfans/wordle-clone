@@ -3,14 +3,14 @@ import React from 'react';
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
-import { checkGuess } from '../../game-helpers'
+
 
 import Input from '../Input/Input';
 import Word from '../Word/Word';
 import Endgame from '../Endgame/Endgame';
 
 // Pick a random word on every pageload.
-const answer = sample(WORDS);
+const answer = "SORES"//sample(WORDS);
 // To make debugging easier, we'll log the solution in the console.
 console.info({ answer });
 
@@ -23,8 +23,7 @@ function Game() {
 
       {Array(NUM_OF_GUESSES_ALLOWED).fill().map((e, i) => {
 
-        const guessArr = checkGuess(guesses[i], answer)
-        return (<Word key={i} checkedGuess={guessArr} />)
+        return (<Word key={i} guesses={guesses} answer={answer} idx={i} />)
       }
       )}
       <br />

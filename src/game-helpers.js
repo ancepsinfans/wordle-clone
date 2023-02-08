@@ -3,23 +3,66 @@ export function checkGuess(guess, answer) {
     return null;
   }
 
+  // function countr(arr) {
+  //   const counts = {};
+
+  //   for (const num of arr) {
+  //     counts[num] = counts[num] ? counts[num] + 1 : 1;
+  //   }
+
+  //   return counts
+  // }
+
+
   const guessChars = guess.toUpperCase().split('');
   const answerChars = answer.split('');
 
-  return guessChars.map((guessChar, index) => {
-    const answerChar = answerChars[index];
+  function firstPass(gc, ac) {
 
-    let status;
-    if (guessChar === answerChar) {
-      status = 'correct';
-    } else if (answerChars.includes(guessChar)) {
-      status = 'misplaced';
-    } else {
-      status = 'incorrect';
-    }
-    return {
-      letter: guessChar,
-      status,
-    };
-  });
+    const fp = Array(5).fill({ letter: '', status: '' })
+    const unmatched = {}
+
+    gc.map((guessChar, index) => {
+      const answerChar = ac[index];
+
+      let status;
+
+      if (guessChar === answerChar) {
+        status = 'correct';
+      } else {
+        unmatched[answerChar] = (unmatched[answerChar] || 0) + 1
+      }
+      fp[index] = {
+        letter: guessChar,
+        status,
+      };
+    })
+
+    gc.map((letter, index) => {
+      if (letter !== ac[index]) {
+        if (unmatched[letter]) {
+          fp[index] = {
+            letter: letter,
+            status: 'misplaced',
+          };
+          unmatched[letter] = unmatched[letter] - 1
+        } else {
+          fp[index] = {
+            letter: letter,
+            status: 'incorrect',
+          };
+        }
+      }
+    })
+
+    return fp
+  }
+
+  const res = firstPass(guessChars, answerChars)
+
+
+  console.log(res)
+
+
+  return res
 }

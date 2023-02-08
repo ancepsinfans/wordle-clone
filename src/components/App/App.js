@@ -7,7 +7,7 @@ function App() {
   return (
     <div className={isOpen ? 'modal' : 'wrapper'}>
       <Header isOpen={isOpen} setIsOpen={setIsOpen} />
-      <div className={!isOpen ? 'visually-hidden' : 'modal-content'}>
+      <div className={!isOpen ? 'totally-hidden' : 'modal-content'}>
         <Header isHelp={true} isOpen={isOpen} setIsOpen={setIsOpen} />
         <p>as;ldkfj</p>
       </div>
