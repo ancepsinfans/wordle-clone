@@ -170,7 +170,17 @@ h1 {
 
 .guess-input-wrapper input {
   display: block;
-  width: 100%;
+  width: 85%;
+  font-size: 2rem;
+  border: 2px solid var(--color-gray-300);
+  border-radius: 4px;
+  padding: 8px 16px;
+  outline-offset: 4px;
+}
+
+.input-btn {
+  display: block;
+  width: 15%;
   font-size: 2rem;
   border: 2px solid var(--color-gray-300);
   border-radius: 4px;

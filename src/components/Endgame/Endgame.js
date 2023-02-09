@@ -1,20 +1,30 @@
 import React from "react";
 import { GrRotateRight } from "react-icons/gr";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
+import { WORDS } from "../../data";
+import { sample } from "../../utils";
 
 
 
-function Endgame({ answer, guesses, setGuesses }) {
-  const type = guesses[guesses.length - 1] === answer ? 'happy' : 'sad'
+function Endgame({ answer, guesses, setGuesses, record, setRecord, setAnswer }) {
+  let isGuessCorrect = guesses[guesses.length - 1] === answer
+  let hasUsedAllAttempts = guesses.length === NUM_OF_GUESSES_ALLOWED
+
+  const type = isGuessCorrect ? 'happy' : 'sad'
 
   function handlerReset() {
+    const newRecord = [...record, guesses.length]
+    setRecord(newRecord)
     setGuesses([])
-    window.location.reload();
+    isGuessCorrect = false
+    hasUsedAllAttempts = false
+    setAnswer(sample(WORDS))
+    // window.location.reload();
 
   }
 
   return (
-    <div className={`banner ${type}`} hidden={!!(guesses.length < NUM_OF_GUESSES_ALLOWED) * (guesses[guesses.length - 1] !== answer)}>
+    <div className={`banner ${type}`} hidden={!(hasUsedAllAttempts || isGuessCorrect)}>
       {type === 'happy' ? (
         <div className="message">
           <div />

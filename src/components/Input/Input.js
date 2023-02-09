@@ -1,4 +1,6 @@
 import React from "react";
+import { FaPlay } from 'react-icons/fa'
+import { VALID_WORDS } from "../../data";
 
 function Input({ guesses, setGuesses, disabled }) {
   const [guess, setGuess] = React.useState('')
@@ -11,17 +13,27 @@ function Input({ guesses, setGuesses, disabled }) {
           window.alert("yo, this ain't a five-letter word")
           return
         }
+        if (!VALID_WORDS.includes(guess.toLowerCase())) {
+          window.alert('umm... are you sure that is a legit word?')
+          return
+        }
+
+
         const newGuesses = [...guesses, guess]
         setGuesses(newGuesses)
         setGuess('')
       }}>
       <label htmlFor="guess-input">Enter guess:</label>
-      <input
-        disabled={!disabled}
-        id="guess-input"
-        type='text'
-        value={guess.toLowerCase()}
-        onChange={(e) => setGuess(e.target.value.toUpperCase())} />
+      <div className="message">
+        <input
+          disabled={!disabled}
+          id="guess-input"
+          type='text'
+          value={guess.toLowerCase()}
+          onChange={(e) => setGuess(e.target.value.toUpperCase())} />
+        <div />
+        <button className="input-btn" type="submit"><FaPlay /></button>
+      </div>
     </form>
   );
 }

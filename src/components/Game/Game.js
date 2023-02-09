@@ -10,13 +10,13 @@ import Word from '../Word/Word';
 import Endgame from '../Endgame/Endgame';
 
 // Pick a random word on every pageload.
-const answer = sample(WORDS);
+// const answer = sample(WORDS);
 // To make debugging easier, we'll log the solution in the console.
-console.info({ answer });
 
-function Game() {
+function Game({ record, setRecord }) {
   const [guesses, setGuesses] = React.useState([])
-
+  const [answer, setAnswer] = React.useState(sample(WORDS))
+  console.info({ answer });
 
   return (
     <div className='guess-results'>
@@ -28,8 +28,6 @@ function Game() {
       )}
       <br />
 
-
-
       <Input
         guesses={guesses}
         setGuesses={setGuesses}
@@ -37,6 +35,9 @@ function Game() {
       />
 
       <Endgame
+        setAnswer={setAnswer}
+        record={record}
+        setRecord={setRecord}
         guesses={guesses}
         setGuesses={setGuesses}
         answer={answer}

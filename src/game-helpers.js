@@ -3,17 +3,6 @@ export function checkGuess(guess, answer) {
     return null;
   }
 
-  // function countr(arr) {
-  //   const counts = {};
-
-  //   for (const num of arr) {
-  //     counts[num] = counts[num] ? counts[num] + 1 : 1;
-  //   }
-
-  //   return counts
-  // }
-
-
   const guessChars = guess.toUpperCase().split('');
   const answerChars = answer.split('');
 
@@ -58,9 +47,5 @@ export function checkGuess(guess, answer) {
     return fp
   }
 
-  const res = firstPass(guessChars, answerChars)
-
-
-
-  return res
+  return firstPass(guessChars, answerChars)
 }
