@@ -13,17 +13,26 @@ import Endgame from '../Endgame/Endgame';
 // const answer = sample(WORDS);
 // To make debugging easier, we'll log the solution in the console.
 
-function Game({ record, setRecord }) {
+function Game({ record, setRecord, isLowPower, brokenColumnNum }) {
   const [guesses, setGuesses] = React.useState([])
   const [answer, setAnswer] = React.useState(sample(WORDS))
+
   console.info({ answer });
+
 
   return (
     <div className='guess-results'>
 
       {Array(NUM_OF_GUESSES_ALLOWED).fill().map((e, i) => {
 
-        return (<Word key={i} guesses={guesses} answer={answer} idx={i} />)
+        return (<Word
+          key={i}
+          isLowPower={isLowPower}
+          brokenColumnNum={brokenColumnNum}
+          guesses={guesses}
+          answer={answer}
+          idx={i}
+        />)
       }
       )}
       <br />

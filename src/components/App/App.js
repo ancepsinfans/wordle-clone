@@ -6,7 +6,9 @@ import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 function App() {
   const [isOpen, setIsOpen] = React.useState(false)
   const [record, setRecord] = React.useState([])
-
+  const [isLowPower, setIsLowPower] = React.useState(false)
+  const [brokenColumnNum, setBrokenColumnNum] = React.useState(null)
+  console.log(isLowPower.toString())
   let average = 0
   try {
     average = record.reduce((a, b) => (a + b)) / record.length
@@ -18,6 +20,9 @@ function App() {
 
     <div className={isOpen ? 'modal' : 'wrapper'}>
       <Header
+        isLowPower={isLowPower}
+        setIsLowPower={setIsLowPower}
+        setBrokenColumnNum={setBrokenColumnNum}
         average={average}
         isOpen={isOpen}
         setIsOpen={setIsOpen} />
@@ -38,9 +43,14 @@ function App() {
           <li>The words are real words.</li>
         </ul>
         And that's really just about it.
+        <br />
+        <h2>Low Power Mode</h2>
+        <p>In Low Power Mode, one of the columns just doesn't have enough juice to light up, and will always display as incorrect.</p>
       </div>
       <div className="game-wrapper">
         <Game
+          brokenColumnNum={brokenColumnNum}
+          isLowPower={isLowPower}
           setRecord={setRecord}
           record={record}
         />
