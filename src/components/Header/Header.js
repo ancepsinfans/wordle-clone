@@ -11,8 +11,8 @@ function Header({ isHelp = false, isOpen, setIsOpen, average, isLowPower, setIsL
       <div className='side' >{!isHelp ? `${average.toFixed(1)} - avg` : null}</div>
       <div className='side' />
       <div className='side' />
-      <h1>{!isHelp ? 'Word Game' : 'How to Play'}</h1>
-      <div className='side'>{isHelp ? null : 'Low Power'}</div>
+      <h1>{!isHelp ? 'Fivr' : 'How?'}</h1>
+      <div className='side'></div>
       <div className='side'>
         {isHelp ? null :
           <Toggle

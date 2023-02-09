@@ -45,7 +45,7 @@ function App() {
         And that's really just about it.
         <br />
         <h2>Low Power Mode</h2>
-        <p>In Low Power Mode, one of the columns just doesn't have enough juice to light up, and will always display as incorrect.</p>
+        <p>See that toggle above? That turns on Low Power Mode. In Low Power Mode, one of the columns just doesn't have enough juice to light up, and will always display as incorrect.</p>
       </div>
       <div className="game-wrapper">
         <Game
