@@ -14,7 +14,7 @@ function Input({ guesses, setGuesses, disabled }) {
           return
         }
         if (!VALID_WORDS.includes(guess.toLowerCase())) {
-          window.alert('umm... are you sure that is a legit word?')
+          window.alert('either that isn\'t a legit word, or you\'re barking up the wrong tree')
           return
         }
 
